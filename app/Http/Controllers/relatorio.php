@@ -26,7 +26,7 @@ class relatorio extends Controller
          $solicitacao = Solicitacao::whereBetween('created_at', '=', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59'])->get();
         }
 
-        //dd($request['id_setor']);
+        //dd($request['id_setor'])
       
         return view ('relatorio', compact ('setores'));
      }
