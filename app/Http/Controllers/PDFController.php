@@ -20,7 +20,7 @@ class PDFController extends Controller
      */
     public function generatePDF()
     {
-        $solicitacao = Solicitacao::get();
+        $solicitacao = Solicitacao::findOrFail(1)->get();
       
         //$solicitacao = Solicitacao::with('setores')->find('')->get();
 

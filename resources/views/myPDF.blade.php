@@ -28,7 +28,7 @@
     <tbody>
         @foreach($solicitacao as $solic)
         <tr>
-            <th>{{$solic->setores->Nome}} - {{$solic->setores->Sigla}}</th>
+            <th>{{--$solic->id_setor--}}</th>
             <th>{{$solic->quant_resmas}}</th>
             <th>{{$solic->created_at->format('d/m/Y')}}</th>
         </tr>
