@@ -31,31 +31,26 @@ class relatorio extends Controller
         return view ('relatorio', compact ('setores'));
      }
 
-     public function generatePDF(Request $request)
-    {
-
+    public function show(Request $id_setor){
       
-         $solicitacao = Solicitacao::where('id_setor', $request->id_setor)
-         ->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
-        
+      //$id_setor = 1;
+      $solicitacao = Solicitacao::where('id_setor', $id_setor)->get();
+      //print_r($solicitacao);
+      
 
-        /*if($request->datainicial && $request->datafinal){
-         $solicitacao = Solicitacao::whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
-        }*/
 
-        $solicitacao = Solicitacao::get();
-        
+      $relatorio = [
+        'title' => 'Relatório',
+        'date' => date('d/m/Y'),
+        'solicitacao' => $solicitacao,
+    ]; 
 
-  
-        $relatorio = [
-            'title' => 'Relatório',
-            'date' => date('d/m/Y'),
-            'solicitacao' => $solicitacao,
-        ]; 
-            
-        $pdf = PDF::loadView('myPDF', $relatorio);
-     
-        return $pdf->stream('relatorio.pdf');
+    
+      //$solicitacao = Solicitacao::where('id_setor', $request->id_setor)
+         //->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
+
+      $pdf = PDF::loadView('myPDF', $relatorio);
+      return $pdf->stream('relatorio.pdf');
     }
   }
 

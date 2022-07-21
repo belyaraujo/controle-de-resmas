@@ -39,7 +39,7 @@ Route::get('/relatorio', [relatorio::class, 'relatorio']);
 //Route::post('/relatorio', [relatorio::class, 'relatorio']);
 
 
-Route::get('/generate-pdf', [relatorio::class, 'generatePDF'])->name('gera-pdf');
+Route::get('/generate-pdf', [relatorio::class, 'show'])->name('gera-pdf');
 
 
 

@@ -20,7 +20,7 @@ class PDFController extends Controller
      */
     public function generatePDF()
     {
-        $solicitacao = Solicitacao::get();
+        //$solicitacao = Solicitacao::get();
       
         //$solicitacao = Solicitacao::with('setores')->find('')->get();
 
@@ -30,7 +30,7 @@ class PDFController extends Controller
         $relatorio = [
             'title' => 'Relatório de',
             'date' => date('d/m/Y'),
-            'solicitacao' => $solicitacao,
+            'solicitacao' => $buscar,
         ]; 
             
         $pdf = PDF::loadView('myPDF', $relatorio);
