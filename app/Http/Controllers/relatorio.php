@@ -17,10 +17,8 @@ class relatorio extends Controller
     public function relatorio(Request $request){
         $setores = Setores::orderby('id')->get();
         
-        $solicitacao = Solicitacao::findOrFail(1)->get();
-       
 
-         /*$solicitacao = Solicitacao::where('id_setor', '=', $request->id_setor)
+         $solicitacao = Solicitacao::where('id_setor', '=', $request->id_setor)
          ->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
         
 
@@ -35,10 +33,9 @@ class relatorio extends Controller
 
      public function generatePDF(Request $request)
     {
-      $solicitacao = Solicitacao::findOrFail(1)->get();
 
       
-         /*$solicitacao = Solicitacao::where('id_setor', $request->id_setor)
+         $solicitacao = Solicitacao::where('id_setor', $request->id_setor)
          ->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
         
 
@@ -46,7 +43,7 @@ class relatorio extends Controller
          $solicitacao = Solicitacao::whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
         }*/
 
-        //$solicitacao = Solicitacao::get();
+        $solicitacao = Solicitacao::get();
         
 
   
