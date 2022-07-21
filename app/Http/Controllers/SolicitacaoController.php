@@ -32,7 +32,7 @@ class SolicitacaoController extends Controller
         
         $solicitacao->save();
 
-       return view ('historico');
+       //return view ('historico');
     }
 
     /**

@@ -31,11 +31,18 @@ class relatorio extends Controller
         return view ('relatorio', compact ('setores'));
      }
 
-    public function show(Request $id_setor){
-      
-      //$id_setor = 1;
-      $solicitacao = Solicitacao::where('id_setor', $id_setor)->get();
-      //print_r($solicitacao);
+    public function show(Request $request){
+      //$id_setor=$request->input('id_setor');
+      //$datainicial=$request->input('datainicial');
+      //$datafinal=$request->input('datafinal');
+      $id_setor = 1;
+      //$solicitacao->id_setor=$request->input('nome');
+     $datainicial = '2022-07-06';
+      $datafinal = '2022-07-08';
+      $solicitacao = Solicitacao::where('id_setor', $id_setor)
+      ->whereBetween('created_at', [$datainicial.'00:00:00', $datafinal.'23:59:59'])
+      ->get();
+      dd($solicitacao);
       
 
 
@@ -49,8 +56,8 @@ class relatorio extends Controller
       //$solicitacao = Solicitacao::where('id_setor', $request->id_setor)
          //->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
 
-      $pdf = PDF::loadView('myPDF', $relatorio);
-      return $pdf->stream('relatorio.pdf');
+      //$pdf = PDF::loadView('myPDF', $relatorio);
+      //return $pdf->stream('relatorio.pdf');
     }
   }
 
