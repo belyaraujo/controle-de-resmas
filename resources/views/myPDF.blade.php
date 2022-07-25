@@ -44,7 +44,7 @@
             <th>{{$solic->created_at->format('d/m/Y')}}</th>
         </tr>
         @endforeach
-        <p>Total de resmas solicitadas:{{$quant_resmas}}</p>
+        
     </tbody> 
 
      

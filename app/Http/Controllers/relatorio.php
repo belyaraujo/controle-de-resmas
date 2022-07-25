@@ -53,7 +53,7 @@ class relatorio extends Controller
 
       ->whereBetween('created_at', [$datainicial.' 00:00:00', $datafinal.' 23:59:59'])
 
-      ->select(Solicitacao::raw('sum(quant_resmas) as Total'))
+      
       //->whereBetween('created_at', [$request->datainicial . '00:00:00', $request->datafinal . '23:59:59'])
       ->get();
 
