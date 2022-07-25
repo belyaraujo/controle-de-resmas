@@ -30,7 +30,7 @@ class PDFController extends Controller
         $relatorio = [
             'title' => 'Relatório de',
             'date' => date('d/m/Y'),
-            'solicitacao' => $buscar,
+            
         ]; 
             
         $pdf = PDF::loadView('myPDF', $relatorio);

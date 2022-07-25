@@ -17,7 +17,7 @@
     <div style="display:inline-block;">
 
 
-    <h1>{{-- $title --}}</h1>
+    <h1>{{ $title }}</h1>
  </div>
     </div>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -44,8 +44,9 @@
             <th>{{$solic->created_at->format('d/m/Y')}}</th>
         </tr>
         @endforeach
+        <p>Total de resmas solicitadas:{{$quant_resmas}}</p>
     </tbody> 
-<?
+
      
 
     </table>
