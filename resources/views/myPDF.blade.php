@@ -104,5 +104,5 @@
 
     </table>
     <br>
-<h3>Total de resmas:{{$total}}</h3>
+<h3>Total de resmas: {{$total}}</h3>
 </body>
