@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Htpp\Request;
 use App\Http\Controllers\cadastro;
+use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\historico;
 use App\Http\Controllers\relatorio;
 use App\Http\Controllers\PDFController;
@@ -35,11 +36,12 @@ Route::get('/', [historico::class, 'show'])->name('historico');
 //Rota criar setor
 Route::post('/cadastro-setor', [SolicitacaoController::class, 'store'])->name('criar-solicitacao');
 
-Route::get('/relatorio', [relatorio::class, 'relatorio']);
+Route::get('/relatorio', [relatorio::class, 'relatorio'])->name('relatorio');
 //Route::post('/relatorio', [relatorio::class, 'relatorio']);
 
 
 Route::get('/generate-pdf', [relatorio::class, 'show'])->name('gera-pdf');
+
 
 
 

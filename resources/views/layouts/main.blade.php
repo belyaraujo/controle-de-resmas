@@ -29,7 +29,7 @@
     <nav class="navbar " style="background-color: #E0E0E0;">
         <div class="container-fluid">
             <a class="navbar-brand">
-                <img src="/img/logonovacap.png" class="d-inline-block align-text-top">
+                <img src="/img/Logo_transparente.png" style="width: 150px; height: 60px" class="d-inline-block align-text-top">
                 <a class="navbar-brand text-dark">
                     Controle de resmas
                 </a>

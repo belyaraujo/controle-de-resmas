@@ -69,7 +69,7 @@
 
             <option>Escolha uma opção</option>
             <option href="{{route('gera-pdf')}}">PDF</option>
-            <option>XLS</option>
+            <option >XLS</option>
             <option>CSV</option>
 
 

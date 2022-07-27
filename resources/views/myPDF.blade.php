@@ -1,56 +1,109 @@
-<!DOCTYPE html>
-<html>
-
 <head>
-    
-    
-    {{--<img src="{{ public_path('/img/logonovacap.png') }}" style="width: 100px; height: 100px">--}}
-    
-    <title>Relatório</title>
-    <p>{{-- $date --}}</p>
-    <br>
-
-    <div style="display:inline-block;vertical-align:top;">
-
-    <img src="{{ public_path('/img/logonovacap.png') }}" style="width: 150px; height: 60px">
-
-    <div style="display:inline-block;">
+    <style>
+        * {
+            font-family: 'Barlow', sans-serif;
+        }
 
 
-    <h1>{{ $title }}</h1>
- </div>
+
+
+
+        h2 {
+            font-family: 'Barlow', sans-serif;
+            padding-top: 40px !important;
+            padding-bottom: 25px !important;
+            text-align: center;
+        }
+
+        h5 {
+            font-family: 'Barlow', sans-serif;
+            margin-top: 10px;
+            margin-right: 0px;
+            text-align: center;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #logo {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        tr.cab th {
+            background-color: #a8daf2;
+
+            font-weight: lighter;
+
+            padding: 5px;
+        }
+
+        table.exe4 {
+            border-collapse: collapse;
+            width: 100%;
+            
+            font-weight: lighter;
+        }
+
+        table.exe4 tr:nth-child(even) {
+            background-color: #EBF0FA;
+            font-weight: lighter;
+        }
+
+        table.exe4 tr:nth-child(odd) {
+            background-color: #bfbebe;
+
+            font-weight: lighter;
+        }
+    </style>
+    <div class="container-fluid">
+        <div>
+            <div style="float: left">
+                <img src="{{ public_path('/img/novacapLogo.jpg') }}" style="width: 160px; height: 60px" />
+            </div>
+            <div>
+                <h5>GOVERNO DO DISTRITO FEDERAL</h5>
+                <h5>COMPANHIA URBANIZADORA DA NOVA CAPITAL DO BRASIL</h5>
+            </div>
+        </div>
     </div>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div>
+        <h2>Controle de Resmas</h2>
+    </div>
 
+    <div>
+
+
+    </div>
 </head>
 
 <body>
-    
 
-    <table class="table table-bordered">
+
+
+    <table class="exe4">
         <thead style="background-color: 	#E1F5FE;">
-        <tr>
-            <th>Setor</th>
-            <th>Quantidade de Resmas</th>
-            <th>Data inicial - Data final</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($solicitacao as $solic)
-        <tr>
-            <th>{{$solic->setores->Nome}} - {{$solic->setores->Sigla}}</th>
-            <th>{{$solic->quant_resmas}}</th>
-            <th>{{$solic->created_at->format('d/m/Y')}}</th>
-        </tr>
-        @endforeach
-        
-    </tbody> 
+            <tr class="cab">
+                <th style="border-style:solid;">Setor</th>
+                <th style="border-style:solid;">Quantidade de Resmas</th>
+                <th style="border-style:solid;">Data Solicitação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($solicitacao as $solic)
+                <tr>
+                    <th>{{ $solic->setores->Nome }} - {{ $solic->setores->Sigla }}</th>
+                    <th>{{ $solic->quant_resmas }}</th>
+                    <th>{{ $solic->created_at->format('d/m/Y') }}</th>
+                </tr>
+            @endforeach
 
-     
+        </tbody>
+
 
     </table>
-
+    <br>
+<h3>Total de resmas:{{$total}}</h3>
 </body>
-
-</html>
