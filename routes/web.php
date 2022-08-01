@@ -41,7 +41,8 @@ Route::get('/relatorio', [relatorio::class, 'relatorio'])->name('relatorio');
 
 
 Route::get('/generate-pdf', [relatorio::class, 'show'])->name('gera-pdf');
-
+Route::get('/relatorio/export/', [relatorio::class, 'export'])->name('gera-xls');
+Route::get('/relatorio/export/', [relatorio::class, 'CSV'])->name('gera-csv');
 
 
 

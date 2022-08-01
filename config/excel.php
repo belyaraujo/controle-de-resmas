@@ -126,6 +126,7 @@ return [
             'enclosure'        => '"',
             'escape_character' => '\\',
             'contiguous'       => false,
+            'use_bom'          => true,
             'input_encoding'   => 'UTF-8',
         ],
 

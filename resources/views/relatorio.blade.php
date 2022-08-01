@@ -18,7 +18,7 @@
                     <p class="card-text">
 
                         <!-- Setor-->
-                    <form action="{{route('gera-pdf')}}" method="GET">
+                    <form action="{{route('gera-csv')}}" method="GET">
                         @csrf
                         <div class="form-group">
                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Setor:</label>
@@ -68,7 +68,7 @@
         <select class="form-control" name="documentos" id="documentos">
 
             <option>Escolha uma opção</option>
-            <option href="{{route('gera-pdf')}}">PDF</option>
+            <option>PDF</option>
             <option >XLS</option>
             <option>CSV</option>
 

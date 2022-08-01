@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Setores;
 use App\Models\Solicitacao;
 use App\Models\RelatorioModel;
-use App\Exports\RelatorioExport;
-use Illuminate\Support\Facades\DB;
 use PDF;
-use Excel;
+use Maatwebsite\Excel\Facades\CSV;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RelatorioExport;
+
 
 
 class relatorio extends Controller
@@ -35,6 +36,8 @@ class relatorio extends Controller
     return view('relatorio', compact('setores'));
   }
 
+      //PDF
+     
   public function show(Request $request)
   {
   
@@ -68,10 +71,24 @@ class relatorio extends Controller
     return $pdf->stream('relatorio.pdf');
   }
 
-  public function export() 
+      //XLS
+
+  public function export(Request $request)
   {
-      return Excel::download(new RelatorioExport, 'users.xlsx');
+    $id_setor = $request->input('id_setor');
+    $datainicial = $request->input('datainicial'); 
+    $datafinal = $request->input('datafinal'); 
+    return Excel::download(new RelatorioExport($id_setor, $datainicial, $datafinal), 'relatorio.xlsx');
   }
+
+  public function CSV(Request $request)
+  {
+    $id_setor = $request->input('id_setor');
+    $datainicial = $request->input('datainicial'); 
+    $datafinal = $request->input('datafinal'); 
+    return Excel::download(new RelatorioExport($id_setor, $datainicial, $datafinal), 'relatorio.csv');
+  }
+
 }
 
         //public function buscar($id_setor)
