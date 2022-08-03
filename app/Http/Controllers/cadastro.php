@@ -15,7 +15,6 @@ class cadastro extends Controller
 
         $setores = Setores::orderby('id')->get();
 
-
         return view ('cadastro', compact ('setores'));
     }
    

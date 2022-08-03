@@ -17,6 +17,8 @@ use App\Exports\RelatorioExport;
 class relatorio extends Controller
 {
 
+  //return redirect()->route('login');
+
 
   public function relatorio(Request $request)
   {
@@ -36,59 +38,57 @@ class relatorio extends Controller
     return view('relatorio', compact('setores'));
   }
 
-      //PDF
-     
-  public function show(Request $request)
-  {
-  
 
-    $id_setor = $request->input('id_setor'); 
-    $datainicial = $request->input('datainicial'); 
-    $datafinal = $request->input('datafinal'); 
-   
-    
-   $solicitacao = Solicitacao::where('id_setor', $id_setor)
-      ->whereBetween('created_at', [$datainicial.' 00:00:00', $datafinal.' 23:59:59'])
-      ->get();
+
+  public function Docs(Request $request)
+  {
+
+    $option = $request->documentos;
+
+    $id_setor = $request->input('id_setor');
+    $datainicial = $request->input('datainicial');
+    $datafinal = $request->input('datafinal');
+
+    if ($option == 1) {
+
+      //PDF
+
+      $solicitacao = Solicitacao::where('id_setor', $id_setor)
+        ->whereBetween('created_at', [$datainicial . ' 00:00:00', $datafinal . ' 23:59:59'])
+        ->get();
 
       $total = Solicitacao::where('id_setor', $id_setor)
-      ->whereBetween('created_at', [$datainicial.' 00:00:00', $datafinal.' 23:59:59'])
-      ->sum('quant_resmas');
+        ->whereBetween('created_at', [$datainicial . ' 00:00:00', $datafinal . ' 23:59:59'])
+        ->sum('quant_resmas');
 
 
-    $relatorio = [
-      'title' => 'Relatório',
-      'date' => date('d/m/Y'),
-      'solicitacao' => $solicitacao,
-      'total' => $total,
-    ];
+      $relatorio = [
+        'title' => 'Relatório',
+        'date' => date('d/m/Y'),
+        'solicitacao' => $solicitacao,
+        'total' => $total,
+      ];
 
 
-    //$solicitacao = Solicitacao::where('id_setor', $request->id_setor)
-    //->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
+      //$solicitacao = Solicitacao::where('id_setor', $request->id_setor)
+      //->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);
 
-    $pdf = PDF::loadView('myPDF', $relatorio);
-    return $pdf->stream('relatorio.pdf');
-  }
+      $pdf = PDF::loadView('myPDF', $relatorio);
+      return $pdf->stream('relatorio.pdf');
+    }
+    if ($option == 2) {
 
       //XLS
 
-  public function export(Request $request)
-  {
-    $id_setor = $request->input('id_setor');
-    $datainicial = $request->input('datainicial'); 
-    $datafinal = $request->input('datafinal'); 
-    return Excel::download(new RelatorioExport($id_setor, $datainicial, $datafinal), 'relatorio.xlsx');
-  }
+      return Excel::download(new RelatorioExport($id_setor, $datainicial, $datafinal), 'relatorio.xlsx');
+    }
+    if ($option == 3) {
 
-  public function CSV(Request $request)
-  {
-    $id_setor = $request->input('id_setor');
-    $datainicial = $request->input('datainicial'); 
-    $datafinal = $request->input('datafinal'); 
-    return Excel::download(new RelatorioExport($id_setor, $datainicial, $datafinal), 'relatorio.csv');
-  }
+      //CVS
 
+      return Excel::download(new RelatorioExport($id_setor, $datainicial, $datafinal), 'relatorio.csv');
+    }
+  }
 }
 
         //public function buscar($id_setor)

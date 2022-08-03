@@ -12,26 +12,22 @@ use App\Models\setores;
 class historico extends Controller
 {
 
-    public function show (Request $request){
+    public function show(Request $request)
+    {
         /*$solicitacao = Solicitacao::with(['id_setor', 'id'])->get();*/
 
         //$solicitacao = Solicitacao::all();
-        
-        //$solicitacao = setores::find(1)->solicitacao;
-        $solicitacao = Solicitacao::with('setores')->get();
 
-       // $setores = setores::with('solicitacao')->first();
+        //$solicitacao = setores::find(1)->solicitacao;
+
+        // $setores = setores::with('solicitacao')->first();
 
         //$solicitacao = $setores->solicitacao;
 
-       //$solicitacao = Solicitacao::where('id', $setores)->first();
-       
-        return view ('historico', ['solicitacao' => $solicitacao]);
-        
-    }
-    
-    /*public function setores(){
+        //$solicitacao = Solicitacao::where('id', $setores)->first();
 
-        return $this->belongsTo( related:Setores::class);
-    }*/
+        $solicitacao = Solicitacao::with('setores')->get();
+
+        return view('historico', ['solicitacao' => $solicitacao]);
+    }
 }

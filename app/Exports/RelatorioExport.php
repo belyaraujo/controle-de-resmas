@@ -13,10 +13,10 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 
-class RelatorioExport implements WithMapping, WithHeadings, Fromquery
+class RelatorioExport implements WithMapping, WithHeadings, Fromquery, WithCustomCsvSettings
 {
     use Exportable;
-    
+
 
     public function __construct(int $id_setor, string $datainicial, string $datafinal)
     {
@@ -29,10 +29,9 @@ class RelatorioExport implements WithMapping, WithHeadings, Fromquery
     {
 
         $solic = Solicitacao::with('setores')->where('id_setor', $this->id_setor)
-        ->whereBetween('created_at', [$this->datainicial.' 00:00:00', $this->datafinal.' 23:59:59']);
+            ->whereBetween('created_at', [$this->datainicial . ' 00:00:00', $this->datafinal . ' 23:59:59']);
 
         return $solic;
-       
     }
 
 
@@ -43,8 +42,8 @@ class RelatorioExport implements WithMapping, WithHeadings, Fromquery
             $solicitacoes->quant_resmas,
             $solicitacoes->created_at->format('d/m/Y'),
             $solicitacoes->with('setores')->where('id_setor', $this->id_setor)
-            ->whereBetween('created_at', [$this->datainicial.' 00:00:00', $this->datafinal.' 23:59:59'])
-          ->sum('quant_resmas'),
+                ->whereBetween('created_at', [$this->datainicial . ' 00:00:00', $this->datafinal . ' 23:59:59'])
+                ->sum('quant_resmas'),
         ];
     }
 
@@ -58,5 +57,15 @@ class RelatorioExport implements WithMapping, WithHeadings, Fromquery
         ];
     }
 
-    
+    public function getCsvSettings(): array
+    {
+        return [
+            'delimiter'        => ',',
+            'enclosure'        => null,
+            'escape_character' => '\\',
+            'contiguous'       => false,
+            'use_bom'          => true,
+            'input_encoding'   => 'UTF-8',
+        ];
+    }
 }
