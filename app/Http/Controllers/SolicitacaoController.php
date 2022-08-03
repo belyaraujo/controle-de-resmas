@@ -16,7 +16,6 @@ class SolicitacaoController extends Controller
      */
     public function index()
     {
-       
     }
 
     /**
@@ -27,12 +26,12 @@ class SolicitacaoController extends Controller
     public function create()
     {
         $solicitacao = new Solicitacao();
-        $solicitacao->id_setor=$request->input('nome'); 
-        $solicitacao->quant_resmas=$request->input('quant_resmas');
-        
+        $solicitacao->id_setor = $request->input('nome');
+        $solicitacao->quant_resmas = $request->input('quant_resmas');
+
         $solicitacao->save();
 
-       //return view ('historico');
+        //return view ('historico');
     }
 
     /**
@@ -45,7 +44,7 @@ class SolicitacaoController extends Controller
     {
         $request->validate([
             'id_setor' => 'required',
-            'quant_resmas'=> 'required|integer',
+            'quant_resmas' => 'required|integer',
         ]);
 
         Solicitacao::create($request->all());
@@ -97,6 +96,4 @@ class SolicitacaoController extends Controller
     {
         //
     }
-
-
 }

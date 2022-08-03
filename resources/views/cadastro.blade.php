@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Novacap - Cadastro')
+@section('title', 'Novacap - Cadastro')
 @section('content')
     <br>
     <br>
@@ -68,25 +68,25 @@
                                         <option value="18">18</option>
                                         <option value="19">19</option>
                                         <option value="20">20</option>
-                                        
+
 
 
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    
-                    <br><br>
-                    <div class="container">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a class="btn btn-outline-danger me-md-2" href="{{ route('historico') }}"
-                                role="button"style="margin: 0 15px;">Cancelar</a>
-                            <button type="submit" class="btn btn-outline-primary">Salvar</button>
 
+                        <br><br>
+                        <div class="container">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a class="btn btn-outline-danger me-md-2" href="{{ route('historico') }}"
+                                    role="button"style="margin: 0 15px;">Cancelar</a>
+                                <button type="submit" class="btn btn-outline-primary">Salvar</button>
+
+                            </div>
                         </div>
-                    </div>
                 </div>
-            </form>
+                </form>
                 </p>
             </div>
         </div>

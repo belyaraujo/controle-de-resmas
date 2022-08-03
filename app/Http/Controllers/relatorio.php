@@ -17,9 +17,6 @@ use App\Exports\RelatorioExport;
 class relatorio extends Controller
 {
 
-  //return redirect()->route('login');
-
-
   public function relatorio(Request $request)
   {
     $setores = Setores::orderby('id')->get();
@@ -33,7 +30,7 @@ class relatorio extends Controller
          $solicitacao = Solicitacao::whereBetween('created_at', '=', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59'])->get();
         }*/
 
-    //dd($request['id_setor']);
+
 
     return view('relatorio', compact('setores'));
   }
@@ -68,7 +65,6 @@ class relatorio extends Controller
         'solicitacao' => $solicitacao,
         'total' => $total,
       ];
-
 
       //$solicitacao = Solicitacao::where('id_setor', $request->id_setor)
       //->whereBetween('created_at', [$request->datainicial.'00:00:00', $request->datafinal.'23:59:59']);

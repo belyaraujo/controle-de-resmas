@@ -19,7 +19,8 @@
     <script src="/js/scripts.js"></script>
 
     <!-- datepicker -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
 
 
@@ -29,7 +30,8 @@
     <nav class="navbar " style="background-color: #E0E0E0;">
         <div class="container-fluid">
             <a class="navbar-brand">
-                <img src="/img/Logo_transparente.png" style="width: 150px; height: 60px" class="d-inline-block align-text-top">
+                <img src="/img/Logo_transparente.png" style="width: 150px; height: 60px"
+                    class="d-inline-block align-text-top">
                 <a class="navbar-brand text-dark">
                     Controle de resmas
                 </a>
@@ -51,13 +53,14 @@
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-           $('#datetimepicker').datetimepicker();
-        });
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js">
+</script>
+<script type="text/javascript">
+    $(function() {
+        $('#datetimepicker').datetimepicker();
+    });
+</script>
 
 </html>
