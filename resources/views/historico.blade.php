@@ -3,11 +3,11 @@
 @section('content')
 
     <br><br>
-    <a class="btn btn-outline-primary" href="/cadastro" role="button">NOVA SOLICITAÇÃO</a>
+   
 
     <div class="container">
 
-
+        <a class="btn btn-outline-primary" href="/cadastro" role="button">NOVA SOLICITAÇÃO</a>
         <br><br>
 
         {{-- dd($solicitacao) --}}
